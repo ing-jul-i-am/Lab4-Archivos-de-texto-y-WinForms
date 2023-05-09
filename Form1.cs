@@ -41,5 +41,11 @@ namespace Lab4_Archivos_de_texto_y_WinForms
             StreamWriter centroEducativo = File.AppendText("centro_educativo.txt");
             centroEducativo.Close();
         }
+
+        private void estudianteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEstudiante a = new frmEstudiante();
+            a.Show();
+        }
     }
 }

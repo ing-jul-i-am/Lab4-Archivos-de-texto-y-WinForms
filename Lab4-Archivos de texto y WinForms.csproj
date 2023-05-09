@@ -70,6 +70,12 @@
     <Compile Include="frmCentroEducativoModDel.Designer.cs">
       <DependentUpon>frmCentroEducativoModDel.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEstudiante.Designer.cs">
+      <DependentUpon>frmEstudiante.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCentroEducativoModDel.resx">
       <DependentUpon>frmCentroEducativoModDel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEstudiante.resx">
+      <DependentUpon>frmEstudiante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Lab4_Archivos_de_texto_y_WinForms
 {
@@ -51,7 +52,25 @@ namespace Lab4_Archivos_de_texto_y_WinForms
             txtNombre.Clear();
             txtDireccion.Clear();
             txtTelefono.Clear();
+            txtNombre.Focus();
 
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtTelefono.Text, "  ^ [0-9]"))
+            {
+                txtTelefono.Text = "";
+
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -33,13 +33,15 @@
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarOEliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estudianteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.centroEducativoToolStripMenuItem});
+            this.centroEducativoToolStripMenuItem,
+            this.estudianteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(521, 24);
@@ -77,6 +79,13 @@
             this.modificarOEliminarToolStripMenuItem.Text = "Modificar o Eliminar";
             this.modificarOEliminarToolStripMenuItem.Click += new System.EventHandler(this.modificarOEliminarToolStripMenuItem_Click);
             // 
+            // estudianteToolStripMenuItem
+            // 
+            this.estudianteToolStripMenuItem.Name = "estudianteToolStripMenuItem";
+            this.estudianteToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.estudianteToolStripMenuItem.Text = "Estudiante";
+            this.estudianteToolStripMenuItem.Click += new System.EventHandler(this.estudianteToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,6 +110,7 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarOEliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estudianteToolStripMenuItem;
     }
 }
 
