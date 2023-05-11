@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab4_Archivos_de_texto_y_WinForms.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -83,6 +84,7 @@ namespace Lab4_Archivos_de_texto_y_WinForms
             gbxModificar.Visible = false;
         }
 
+        //Metodo para limpiar las cajas de texto y selectores.
         private void Clear()
         {
             txtNombre.Clear();
@@ -97,8 +99,65 @@ namespace Lab4_Archivos_de_texto_y_WinForms
             Clear();
         }
 
+        //Metodo del boton buscar por ID
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            //Se llama a la funcion buscar
+            csEstudiante estudiante = Buscar(Convert.ToInt32(txtIdBuscar.Text));
+
+            if(estudiante != null)
+            {
+                txtNombre.Text = estudiante.nombre;
+                txtDireccion.Text = estudiante.direccion;
+                txtTelefono.Text = estudiante.telefono;
+                dtpNacimiento.Value = Convert.ToDateTime(estudiante.nacimiento);
+                cbxGenero.Text = estudiante.genero;
+            } else
+            {
+                MessageBox.Show("No se encontro el estudiante.");
+            }
+            txtIdBuscar.Focus();
+        }
+
+        //Metodo para buscar por ID en general
+        //Devuelve un objeto de la clase estudiante.
+        private csEstudiante Buscar(int ID)
+        {
+            //Se abre archivo para su lectura
+            StreamReader archivo = File.OpenText("estudiante.txt");
+
+            //variables a utilizar para la busqueda
+            string cadena = archivo.ReadLine();
+            string[] registro = new string[4];
+            bool encontrado = false;
+            csEstudiante estudiante = new csEstudiante();
+
+            while(cadena != null && encontrado == false)
+            {
+                registro = cadena.Split('|');
+                if (registro[0] == Convert.ToString(ID))
+                {
+                    encontrado = true;
+                    estudiante.id = Convert.ToInt32(registro[0]);
+                    estudiante.nombre = registro[1];
+                    estudiante.direccion = registro[2];
+                    estudiante.telefono = registro[3];
+                    estudiante.nacimiento = registro[4];
+                    estudiante.genero = registro[5];
+                } else
+                {
+                    cadena = archivo.ReadLine();
+                }
+            }
+
+            archivo.Close();
+            if (encontrado == true)
+            {
+                return estudiante;
+            } else
+            {
+                return null;
+            }
             
 
         }
@@ -121,6 +180,7 @@ namespace Lab4_Archivos_de_texto_y_WinForms
             txtIdEliminar.Clear();
         }
 
+        //Metodo para ingresar registros
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             //Se abre el documento de texto para su lectura
@@ -133,14 +193,14 @@ namespace Lab4_Archivos_de_texto_y_WinForms
             //Se abre el documento de texto para su edicion.
             StreamWriter archivo = File.AppendText("estudiante.txt");
 
-            //Ingressamos el ultimo registro
+            //Ingresamos el ultimo registro
             ultimoId++;
             archivo.WriteLine(ultimoId.ToString() + "|" + txtNombre.Text + "|" 
                 + txtDireccion.Text + "|" + txtTelefono.Text + "|" 
                 + dtpNacimiento.Value.ToShortDateString() + "|" + cbxGenero.Text);
 
             archivo.Close();
-            MessageBox.Show("El registro se ha guardado exitosamente!");
+            MessageBox.Show("El registro se ha guardado exitosamente! ID = " + ultimoId);
             
         }
 
@@ -152,26 +212,31 @@ namespace Lab4_Archivos_de_texto_y_WinForms
             bool encontrado = false;
             int ultimoID=0;
 
-            registro = cadena.Split('|');
-            while (cadena != null && encontrado == false)
+            if(cadena != null)
             {
-                try
+                registro = cadena.Split('|');
+                while (cadena != null && encontrado == false)
                 {
-                    registro = cadena.Split('|');
+                    try
+                    {
+                        registro = cadena.Split('|');
+                    }
+                    catch
+                    {
+                        registro = null;
+                    }
+                    if (registro[0] == null || registro[0] == "")
+                    {
+                        encontrado = true;
+                    }
+                    else
+                    {
+                        ultimoID = Convert.ToInt32(registro[0]);
+                        cadena = archivo.ReadLine();
+                    }
                 }
-                catch
-                {
-                    registro = null;
-                }
-                if (registro[0]==null || registro[0] == "")
-                {
-                    encontrado = true;
-                } else
-                {
-                    ultimoID = Convert.ToInt32(registro[0]);
-                    cadena = archivo.ReadLine();
-                }
-            }
+            } 
+            
 
             archivo.Close();
             return ultimoID;
@@ -184,10 +249,9 @@ namespace Lab4_Archivos_de_texto_y_WinForms
             archivo.Close();
         }
 
-        /*
-        private void button1_Click(object sender, EventArgs e)
+        private void cbxGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(dtpNacimiento.Value.ToShortDateString());
-        }*/
+
+        }
     }
 }

@@ -156,6 +156,7 @@
             this.cbxGenero.Size = new System.Drawing.Size(121, 21);
             this.cbxGenero.Sorted = true;
             this.cbxGenero.TabIndex = 33;
+            this.cbxGenero.SelectedIndexChanged += new System.EventHandler(this.cbxGenero_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -166,7 +167,7 @@
             this.eliminarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(531, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(644, 24);
             this.menuStrip1.TabIndex = 34;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -256,7 +257,7 @@
             this.btnResetBuscar.Location = new System.Drawing.Point(212, 19);
             this.btnResetBuscar.Name = "btnResetBuscar";
             this.btnResetBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnResetBuscar.TabIndex = 1;
+            this.btnResetBuscar.TabIndex = 4;
             this.btnResetBuscar.Text = "Reset";
             this.btnResetBuscar.UseVisualStyleBackColor = true;
             this.btnResetBuscar.Click += new System.EventHandler(this.btnResetBuscar_Click);
@@ -266,7 +267,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(129, 19);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 0;
+            this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -360,7 +361,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 277);
+            this.ClientSize = new System.Drawing.Size(644, 277);
             this.Controls.Add(this.dtpNacimiento);
             this.Controls.Add(this.gbxEliminar);
             this.Controls.Add(this.gbxModificar);
